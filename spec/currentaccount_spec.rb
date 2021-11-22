@@ -16,4 +16,10 @@ describe CurrentAccount do
       expect { subject.withdraw(300) }.to change { subject.balance }.by(-300)
     end
   end
+
+  context "#print_statement" do
+    it "logs to the consoles the statement headers when print_statement is called" do
+      expect { subject.print_statement }.to output(/date || credit || debit || balance/).to_stdout
+    end
+  end
 end

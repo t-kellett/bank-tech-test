@@ -12,4 +12,8 @@ class CurrentAccount
   def withdraw(num)
     @balance -= num
   end
+
+  def print_statement
+    puts "date || credit || debit || balance"
+  end
 end
