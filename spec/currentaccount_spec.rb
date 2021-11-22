@@ -6,8 +6,14 @@ describe CurrentAccount do
       expect(subject.balance).to eq 0
     end
 
-    it "increases balances by 500 when 500 is deposited" do
+    it "increments balances by 500 when 500 is deposited" do
       expect { subject.deposit(500) }.to change { subject.balance }.by(500)
+    end
+  end
+
+  context "#withdraw" do
+    it "decrements balance by 300 when 300 is withdrawn" do
+      expect { subject.withdraw(300) }.to change { subject.balance }.by(-300)
     end
   end
 end
