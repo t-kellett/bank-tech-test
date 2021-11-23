@@ -30,5 +30,9 @@ describe Transactions do
       output = account.print_statement
       expect(output).to eq(account.history)
     end
+
+    it "formats the credit, debit and balance numbers as a float to 2 decimal places" do
+      expect(account.history).to eq([{:date=>"22/11/2021", :credit=>"500.00", :debit=>"", :balance=>"500.00"}, {:date=>"23/11/2021", :credit=>"", :debit=>"300.00", :balance=>"200.00"}])
+    end
   end
 end
