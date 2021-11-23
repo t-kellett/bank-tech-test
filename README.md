@@ -24,17 +24,19 @@ date || credit || debit || balance
 ```
 
 ## How to use
-* Git clone this repository and run the following commands
+* `git clone` this repository and run the following commands
 ```
 cd bank-tech-test
 bundle install
 irb
-require '.lib/transactions'
+require './lib/transactions'
 require './lib/currentaccount'
 account = CurrentAccount.new  #creates a new account with a default balance of 0 that you can deposit or withdraw from
 ```
-* While in `irb` you can then use the methods `account.deposit(num)`, `account.withdraw(num)` and print a statement of transactions using `account.transactions.print_statement` which outputs the day a withdrawal or deposit to the console.
+* While in `irb` you can then use the methods `account.deposit(num)`, `account.withdraw(num)` where `num` is any number and print a statement of transactions using `account.transactions.print_statement` which outputs the day a withdrawal or deposit to the console.
 
 ## Domain Model
-* This was implemented across 2 classes `CurrentAccount` and `Transactions` to respect the SR principle. A domain model representing the implementation is below:
+* This was implemented across 2 classes `CurrentAccount` and `Transactions` to respect the SR principle. A domain model representing the implementation:
+
+
 ![Domain Model](images/domain_model.jpg)
