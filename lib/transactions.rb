@@ -1,10 +1,11 @@
 require 'date'
 
 class Transactions
-  attr_reader :history
+  attr_reader :history, :statement
 
-  def initialize
+  def initialize(statement_class = Statement)
     @history = []
+    @statement = statement_class.new
   end
 
   def add_transaction(date: Date.today.strftime('%d/%m/%Y'), credit: '', debit: '', balance: '')
@@ -19,5 +20,9 @@ class Transactions
     @history.each do |item|
       puts "#{item[:date]} || #{item[:credit]} || #{item[:debit]} || #{item[:balance]}".gsub!('  ', ' ')
     end
+  end
+
+  def create_statement
+    @statement.format_statement(@history)
   end
 end
