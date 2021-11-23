@@ -1,5 +1,3 @@
-#require 'transactions'
-
 class CurrentAccount
   attr_reader :balance, :transactions
 
