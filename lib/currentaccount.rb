@@ -1,15 +1,20 @@
-class CurrentAccount
-  attr_reader :balance
+require 'transactions'
 
-  def initialize
-    @balance = 0.00
+class CurrentAccount
+  attr_reader :balance, :transactions
+
+  def initialize(transactions_class = Transactions)
+    @balance = 0
+    @transactions = transactions_class.new
   end
 
   def deposit(num)
-    @balance += num.to_f.round(2)
+    @balance += num
+    @transactions.add_transaction(credit: num, balance: @balance)
   end
 
   def withdraw(num)
-    @balance -= num.to_f.round(2)
+    @balance -= num
+    @transactions.add_transaction(debit: num, balance: @balance)
   end
 end

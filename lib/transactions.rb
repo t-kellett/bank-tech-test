@@ -8,6 +8,9 @@ class Transactions
   end
 
   def add_transaction(date: Date.today.strftime("%d/%m/%Y"), credit: "", debit: "", balance: "")
+    "#{'%.2f' % credit}" unless credit.to_i == 0
+    "#{'%.2f' % debit}" unless debit.to_i == 0
+    "#{'%.2f' % balance}" unless balance.to_i == 0
     @history.push({:date => date, :credit => credit, :debit => debit, :balance => balance})
   end
 
