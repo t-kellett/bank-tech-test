@@ -37,4 +37,4 @@ account = CurrentAccount.new  #creates a new account with a default balance of 0
 
 ## Domain Model
 * This was implemented across 2 classes `CurrentAccount` and `Transactions` to respect the SR principle. A domain model representing the implementation is below:
-![Domain Model](images/domain_model.jpeg)
+![Domain Model](images/domain_model.jpg)
