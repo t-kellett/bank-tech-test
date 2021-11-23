@@ -31,12 +31,14 @@ bundle install
 irb
 require './lib/transactions'
 require './lib/currentaccount'
+require './lib/statement'
 account = CurrentAccount.new  #creates a new account with a default balance of 0 that you can deposit or withdraw from
 ```
-* While in `irb` you can then use the methods `account.deposit(num)`, `account.withdraw(num)` where `num` is any number and print a statement of transactions using `account.transactions.print_statement` which outputs the day a withdrawal or deposit to the console.
+* While in `irb` you can then use the methods `account.deposit(num)`, `account.withdraw(num)` where `num` is any number then add the existing transactions to a statement of transactions using `account.transactions.create_statement` which adds the transactions to a formatted statement read for printing.
+* You can then call `account.transactions.statement.print_statement` to print the statement to the console
 
 ## Domain Model
-* This was implemented across 2 classes `CurrentAccount` and `Transactions` to respect the SR principle. A domain model representing the implementation:
+* This was implemented across 3 classes `CurrentAccount`, `Transactions` and `Statement` to respect the SR principle. A domain model representing the implementation:
 
 
 ![Domain Model](images/domain_model.jpg)
@@ -44,4 +46,5 @@ account = CurrentAccount.new  #creates a new account with a default balance of 0
 ## Approach and testing
 * To run the testing suite, run `rspec` from the command line
 * A TDD process was followed to tackle this, first creating a `CurrentAccount` class that accepts deposits and withdrawals before moving to `print_statement`
-* In order to not violate the SR principle, the ability to print statements was extracted to a new `Transactions` class, which is responsible for storing the history and printing them (whereas the `CurrentAccount` class is only responsible for updating and maintaining the current balance)
+* In order to not violate the SR principle, the ability to print statements was extracted to a new `Transactions` class, which is responsible for storing the history and printing them to prevent everything existing in one class.
+* This was then further extracted to a `Statements` class so that the `CurrentAccount` iss only responsible for the balance, the `Transactions` class is only responsible for persisting transactions and `Statement` is responsible for printing the statement once created.
