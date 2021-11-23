@@ -11,10 +11,19 @@ describe Statement do
   
   let(:statement) { described_class.new }
 
+  before do
+    statement.format_statement(transactions_array)
+  end
+
   context "format_statement" do
     it "takes array of transactions and formats them into a statement string" do
-      statement.format_statement(transactions_array)
-      expect(statement.transactions).to eq(transactions_string)
+      expect(statement.statement_items).to eq(transactions_string)
+    end
+  end
+
+  context "#print_statement" do
+    it "prints the statement to the console" do
+      expect { statement.print_statement }.to output(transactions_string).to_stdout
     end
   end
 end

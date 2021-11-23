@@ -1,13 +1,18 @@
 class Statement
-  attr_reader :transactions
-  
+  attr_reader :statement_items
+
   def initialize
-    @transactions = "date || credit || debit || balance"
+    @statement_items = "date || credit || debit || balance"
   end
 
   def format_statement(transactions)
     transactions.each do |item|
-      @transactions << "\n#{item[:date]} || #{item[:credit]} || #{item[:debit]} || #{item[:balance]}".gsub!("  ", " ")
+      @statement_items << "\n#{item[:date]} || #{item[:credit]} || #{item[:debit]} || #{item[:balance]}".gsub!("  ", " ")
     end
   end
+
+  def print_statement
+    print @statement_items
+  end
+
 end

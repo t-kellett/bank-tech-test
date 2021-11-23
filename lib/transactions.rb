@@ -15,13 +15,6 @@ class Transactions
     @history.unshift({ date: date, credit: credit, debit: debit, balance: balance })
   end
 
-  def print_statement
-    puts 'date || credit || debit || balance'
-    @history.each do |item|
-      puts "#{item[:date]} || #{item[:credit]} || #{item[:debit]} || #{item[:balance]}".gsub!('  ', ' ')
-    end
-  end
-
   def create_statement
     @statement.format_statement(@history)
   end
