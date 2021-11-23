@@ -18,7 +18,7 @@ describe Transactions do
       expect(account.history.first).to eq({ date: '23/11/2021', credit: '', debit: '300.00', balance: '200.00' })
     end
 
-    it "adds today's date aand empty strings as default values if a date is not passed in" do
+    it "adds today's date and empty strings as default values if a date is not passed in" do
       d = Date.today.strftime('%d/%m/%Y')
       subject.add_transaction
       expect(subject.history.first).to eq({ date: d, credit: '', debit: '', balance: '' })
