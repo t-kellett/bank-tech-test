@@ -40,3 +40,8 @@ account = CurrentAccount.new  #creates a new account with a default balance of 0
 
 
 ![Domain Model](images/domain_model.jpg)
+
+## Approach and testing
+* To run the testing suite, run `rspec` from the command line
+* A TDD process was followed to tackle this, first creating a `CurrentAccount` class that accepts deposits and withdrawals before moving to `print_statement`
+* In order to not violate the SR principle, the ability to print statements was extracted to a new `Transactions` class, which is responsible for storing the history and printing them (whereas the `CurrentAccount` class is only responsible for updating and maintaining the current balance)
