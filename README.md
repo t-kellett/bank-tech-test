@@ -34,8 +34,10 @@ require './lib/currentaccount'
 require './lib/statement'
 account = CurrentAccount.new  #creates a new account with a default balance of 0 that you can deposit or withdraw from
 ```
-* While in `irb` you can then use the methods `account.deposit(num)`, `account.withdraw(num)` where `num` is any number then add the existing transactions to a statement of transactions using `account.transactions.create_statement` which adds the transactions to a formatted statement read for printing.
-* You can then call `account.transactions.statement.print_statement` to print the statement to the console
+* While in `irb` you can then use the methods `account.deposit(num)`, `account.withdraw(num)` where `num` is any number to deposit or withdraw.
+* The method `add_transaction` in the `Transaction` class is called when you do this that then adds the deposit/withdrawal to the existing transactions.
+* The method `format_statement` is called within `add_transaction` that adds a correctly formatted string onto the statement to be printed.
+* You can then call `account.transactions.statement.print_statement` to print the statement to the console.
 
 ## Domain Model
 * This was implemented across 3 classes `CurrentAccount`, `Transactions` and `Statement` to respect the SR principle. A domain model representing the implementation:
