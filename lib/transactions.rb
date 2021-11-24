@@ -9,9 +9,9 @@ class Transactions
   end
 
   def add_transaction(date: Date.today.strftime('%d/%m/%Y'), credit: '', debit: '', balance: '')
-    credit = ('%.2f' % credit).to_s unless credit == ''
-    debit = ('%.2f' % debit).to_s unless debit == ''
-    balance = ('%.2f' % balance).to_s unless balance == ''
+    credit = ('%.2f' % credit).to_s unless credit == '' #prevents trailing zeroes from being lost
+    debit = ('%.2f' % debit).to_s unless debit == '' #prevents trailing zeroes from being lost
+    balance = ('%.2f' % balance).to_s unless balance == '' #prevents trailing zeroes from being lost
     @history.unshift({ date: date, credit: credit, debit: debit, balance: balance })
     @statement.format_statement(@history.first)
   end
