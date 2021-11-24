@@ -29,12 +29,11 @@ describe Transactions do
     it 'formats the credit, debit and balance numbers as a float to 2 decimal places' do
       expect(account.history.last).to eq({ date: '22/11/2021', credit: '500.00', debit: '', balance: '500.00' })
     end
-  end
 
-  context '#create_statement' do
-    it 'sends the transaction history to the Statement class' do
-      expect(account.statement).to receive(:format_statement).with(account.history)
-      account.create_statement
+    it "adds the transaction as a formatted statement item by calling format statement" do
+      new_transaction = {date: '24/11/2021', credit: '', debit: '300.00', balance: '400.00'}
+      expect(account.statement).to receive(:format_statement).with(new_transaction)
+      account.add_transaction(date: '24/11/2021', debit: '300.00', balance: '400.00')
     end
   end
 end
